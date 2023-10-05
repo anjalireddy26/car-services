@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    .container
+        h1 Book an Appointment
+        form(action="/book-appointment", method="POST")
+            // Include form fields for appointment details (e.g., date, time, name, etc.)
+            // Example:
+            .form-group
+                label(for="date") Date:
+                input#date.form-control(type="date", name="date", required)
+            
+            .form-group
+                label(for="time") Time:
+                input#time.form-control(type="time", name="time", required)
+            
+            .form-group
+                label(for="name") Your Name:
+                input#name.form-control(type="text", name="name", required)
+            
+            // Add more form fields as needed
+
+            button.btn.btn-primary(type="submit") Book Appointment

@@ -1,0 +1,63 @@
+extends layout
+
+block content
+    .row.banner
+        .col-12
+
+    .row
+        .col-12.col-lg-9
+            .services-scroll-container
+                .row
+                    .col-md-12.text-center.mb-4
+                        img.img-fluid.intro-image(src='https://img.freepik.com/free-vector/auto-service-illustration_1284-20618.jpg', alt='Introductory Image')
+                    h1 Car Services
+                    // List of services
+                    each service, index in servicesList
+                        .col-md-4
+                            .card.service-card
+                                .card-body
+                                    h2= service.title
+                                    img.img-fluid.service-image(
+                                        src=service.imageUrl,
+                                        alt=service.title
+                                    )
+                                    p= service.description
+
+        .col-12.col-lg-3
+            p.lead
+                | Welcome to our car services. We offer a range of services to keep your car in top shape.
+
+            p
+                | If you have any questions or need assistance, feel free to contact us.
+
+            // Appointment Booking Form
+            h2 Book an Appointment
+            form(action="/book-appointment", method="POST")
+                .form-group
+                    label(for="name") Your Name
+                    input.form-control(type="text", id="name", name="name", required)
+                .form-group
+                    label(for="phone number") phone number
+                    input.form-control(type="number", id="phone number", name="phone number", required)
+                .form-group
+                    label(for="email") Email Address
+                    input.form-control(type="email", id="email", name="email", required)
+                .form-group
+                    label(for="service") Select Service
+                    select.form-control(id="service", name="service", required)
+                        option(value="Car Wash") Car Wash
+                        option(value="Car Repair") Car Repair
+                        option(value="Denting and Painting") Denting and Painting
+                        option(value="AC service and repair") AC service and repair
+                        option(value="Batteries") Batteries
+                        option(value="windshield & lights") windshield & lights
+                        option(value="clucth and body parts") clucth and body parts
+                        option(value="suspension and fitments") suspension and fitments
+                        option(value="Insurances") Insurances
+                .form-group
+                    label(for="date") Preferred Date
+                    input.form-control(type="date", id="date", name="date", required)
+                .form-group
+                    label(for="time") Preferred Time
+                    input.form-control(type="time", id="time", name="time", required)
+                button.btn.btn-primary(type="submit") Submit
